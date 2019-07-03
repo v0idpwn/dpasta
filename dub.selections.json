@@ -1,0 +1,7 @@
+{
+	"fileVersion": 1,
+	"versions": {
+		"clipboard": "1.0.0",
+		"gtk-d": "3.9.0"
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"name": "dpasta",
+	"authors": [
+		"v0idpwn"
+	],
+	"description": "Copypasta manager",
+	"copyright": "Copyright © 2019, Felipe Stival",
+	"license": "BSD 3 clause",
+    "dependencies": {
+        "clipboard": "~>1.0.0",
+        "gtk-d:gtkd": "~>3.9.0"
+    }
+}
