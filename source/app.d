@@ -72,7 +72,7 @@ int main(string[] args){
         box.add(btn);
         win.add(box);
         win.showAll();
-        Main.run;
+        Main.run();
     }
     return 0;
 }
