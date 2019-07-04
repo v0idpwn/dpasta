@@ -5,12 +5,14 @@ import clipboard;
 import core.stdc.stdlib : exit;
 import gtk.Entry;
 import gtk.MainWindow;
+import std.path;
 
 enum string WINDOW_NAME = "dpasta";
 enum int WINDOW_WIDTH = 300;
 enum int WINDOW_HEIGHT = 50;
 
 int main(string[] args){
+    string DPASTA_PATH = std.path.expandTilde("~/dpasta/");
     bool config = false;
     bool gui = false;
     auto opt = getopt(
@@ -24,13 +26,12 @@ int main(string[] args){
         writeln("Pass the copypasta name as an argument");
     }
     if(config){
-        string path = "~/dpasta";
-        if(isDir(path)){
+        if(isDir(DPASTA_PATH)){
             writeln("Dpasta dir already exists. Put your copypastas into it!");
             exit(0);
         }
         writeln("Creating dpasta dir...");
-        mkdir("~/dpasta");
+        mkdir(DPASTA_PATH);
         writeln("Creation complete. You're ready to use dpasta now. Just put some 
                 .txt files in teh dir, right?");
         exit(0);
@@ -84,9 +85,9 @@ void btnPress(Entry text_input, MainWindow win){
     import gtk.Label;
     import gtk.Box;
 
+    string DPASTA_PATH = std.path.expandTilde("~/dpasta/");
     auto filename = text_input.getText();
-    auto base_path = "/home/v0idpwn/dpasta/";
-    auto path = base_path ~ filename ~ ".txt"; 
+    auto path = DPASTA_PATH ~ filename ~ ".txt"; 
     auto read = pipeProcess(["cat", path], Redirect.all);
     scope(exit){
         wait(read.pid);
